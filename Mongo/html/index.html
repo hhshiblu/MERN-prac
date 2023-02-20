@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geometry Genius</title>
+    <!-- Tailwind CSS Link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- style css link -->
+
+    <link rel="stylesheet" href="style/style.css" />
+
+    <style></style>
+  </head>
+
+  <body class="">
+    <header class="bg-blue-200 mt-4 mx-4 shadow-xl">
+      <nav class="flex justify-between items-center">
+        <div>
+          <p class="m-4">
+            <b class="text-2xl">Interactive</b><br />Geometry Genius
+          </p>
+        </div>
+        <div>
+          <button id="blog" class="btn border-0 m-4">Blog</button>
+        </div>
+      </nav>
+    </header>
+    <main class="m-4">
+      <div class="grid grid-cols-4 gap-4">
+        <div
+          id="triangle-random-hover random"
+          onmouseover="ChangeColor(this)"
+          onmouseout="ResetColor(this)"
+          class="border-2 p-2 rounded"
+        >
+          <img src="images/triangle.png" alt="" />
+          <h4 class="text-center mt-2 mb-2">Triangle</h4>
+          <p class="text-center mb-2">Area(A)=0.5 X b X h</p>
+          <p class="text-center mb-2">
+            <input
+              id="triangle-base-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="b"
+            />cm
+            <input
+              id="triangle-height-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="h"
+            />cm
+          </p>
+          <button
+            id="triangle-area"
+            class="btn bg-blue-400 text-center w-full mb-2 rounded"
+            onclick="setCalculatedArea('Triangle')"
+          >
+            Calculate
+          </button>
+        </div>
+        <div
+          id="rectangle-random-hover "
+          onmouseover="ChangeColor(this)"
+          onmouseout="ResetColor(this)"
+          class="border-2 p-2 rounded"
+        >
+          <img src="images/rectangle.png" alt="" />
+          <h4 class="text-center mt-2 mb-4">Rectangle</h4>
+          <p class="text-center mb-4">Area(A)=w X l</p>
+          <p class="text-center mb-6">
+            <input
+              id="rectangle-width-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="w"
+            />cm
+            <input
+              id="rectangle-length-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="l"
+            />cm
+          </p>
+          <button
+            id="rectangle-area"
+            class="btn bg-blue-400 text-center w-full mb-2 rounded"
+            onclick="setCalculatedArea('Rectangle')"
+          >
+            Calculate
+          </button>
+        </div>
+        <div
+          id="random-hover"
+          onmouseover="ChangeColor(this)"
+          onmouseout="ResetColor(this)"
+          class="border-2 p-2 rounded"
+        >
+          <img src="images/parallelogram.png" alt="" />
+          <h4 class="text-center mt-4 mb-4">Parallelogram</h4>
+          <p class="text-center mb-4">Area(A)= b X h</p>
+          <p class="text-center mb-8">
+            <input
+              name="paralellogram"
+              id="paralellogram-base-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="b"
+            />cm
+            <input
+              name="paralellogram"
+              id="paralellogram-height-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="h"
+            />cm
+          </p>
+          <button
+            class="btn bg-blue-400 text-center w-full mb-2 rounded"
+            onclick="setCalculatedArea('Paralellogram')"
+          >
+            Calculate
+          </button>
+        </div>
+
+        <div class="border-2 ml-4 p-2 rounded">
+          <h4 class="text-center">Calculate Area</h4>
+          <ul id="display-value"></ul>
+        </div>
+
+        <div
+          id="random-hover"
+          onmouseover="ChangeColor(this)"
+          onmouseout="ResetColor(this)"
+          class="border-2 p-2 rounded"
+        >
+          <img src="images/rhombus.png" alt="" />
+          <h4 class="text-center mt-8 mb-4">Rhombus</h4>
+          <p class="text-center mb-4">Area(A)=0.5 X b X h</p>
+          <p class="text-center mb-8">
+            <input
+              id="rhombus-base-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="b"
+            />cm
+            <input
+              id="rhombus-height-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="h"
+            />cm
+          </p>
+          <button
+            class="btn bg-blue-400 text-center w-full mb-2 rounded"
+            onclick="setCalculatedArea('Rhombus')"
+          >
+            Calculate
+          </button>
+        </div>
+        <div
+          id="random-hover"
+          onmouseover="ChangeColor(this)"
+          onmouseout="ResetColor(this)"
+          class="border-2 p-2 rounded"
+        >
+          <img src="images/pentagon.png" alt="" />
+          <h4 class="text-center mt-8 mb-4">Pentagon</h4>
+          <p class="text-center mb-4">Area(A)=0.5 X p X b</p>
+          <p class="text-center mb-8">
+            <input
+              id="pentagon-base-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="p"
+            />cm
+            <input
+              id="pentagon-height-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="b"
+            />cm
+          </p>
+          <button
+            class="btn bg-blue-400 text-center w-full mb-2 rounded"
+            onclick="setCalculatedArea('Pentagon')"
+          >
+            Calculate
+          </button>
+        </div>
+
+        <div
+          id="random-hover"
+          onmouseover="ChangeColor(this)"
+          onmouseout="ResetColor(this)"
+          class="border-2 p-2 rounded"
+        >
+          <img src="images/ellipse.png" alt="" />
+          <h4 class="text-center mt-6 mb-4">Ellipse</h4>
+          <p class="text-center mb-4">Area(A)=πab</p>
+          <p class="text-center mb-16">
+            <input
+              id="a-axis-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="a"
+            />cm
+            <input
+              id="b-axis-value"
+              class="bg-cyan-100 w-3/12"
+              type="text"
+              placeholder="b"
+            />cm
+          </p>
+          <button
+            class="btn bg-blue-400 text-center w-full mb-2 rounded"
+            onclick="setCalculatedArea('Ellipse')"
+          >
+            Calculate
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let calculatedValue = [];
+
+      //calculating area inside function
+      function calculateTriangleArea(triangleBase, triangleHeight) {
+        return 0.5 * triangleBase * triangleHeight;
+      }
+      function calculateRectangleArea(rectangleWidth, rectangleLength) {
+        return rectangleWidth * rectangleLength;
+      }
+      function calculateParallelogramArea(
+        ParallelogramBase,
+        ParallelogramHeight
+      ) {
+        return ParallelogramBase * ParallelogramHeight;
+      }
+      function calculateRhombusArea(rhombusBase, rhombusHeight) {
+        return 0.5 * rhombusBase * rhombusHeight;
+      }
+      function calculatePentagonArea(pantagonBase, pantagonHeight) {
+        return 0.5 * pantagonBase * pantagonHeight;
+      }
+      function calculateEllipseArea(aAxisValue, bAxisValue) {
+        return 3.14 * aAxisValue * bAxisValue;
+      }
+      //taking the values for calculate
+      function setCalculatedArea(name) {
+        const triangleBaseValue = document.getElementById(
+          "triangle-base-value"
+        ).value;
+        const triangleHeightValue = document.getElementById(
+          "triangle-height-value"
+        ).value;
+
+        const rectangleWidthValue = document.getElementById(
+          "rectangle-width-value"
+        ).value;
+        const ReactangleLengthValue = document.getElementById(
+          "rectangle-length-value"
+        ).value;
+
+        const paralellogramBaseValue = document.getElementById(
+          "paralellogram-base-value"
+        ).value;
+        const paralellogramHeightValue = document.getElementById(
+          "paralellogram-height-value"
+        ).value;
+
+        const rhombusBaseValue =
+          document.getElementById("rhombus-base-value").value;
+        const rhombusHeightValue = document.getElementById(
+          "rhombus-height-value"
+        ).value;
+
+        const pentagonBaseValue = document.getElementById(
+          "pentagon-base-value"
+        ).value;
+        const pentagonHeightValue = document.getElementById(
+          "pentagon-height-value"
+        ).value;
+
+        const ellipseAAxisValue = document.getElementById("a-axis-value").value;
+        const ellipseBAxisValue = document.getElementById("b-axis-value").value;
+
+        //calculate the area by sending arguments
+        const calculatedTriangleValue = calculateTriangleArea(
+          triangleBaseValue,
+          triangleHeightValue
+        );
+        const calculatedRectangleValue = calculateRectangleArea(
+          rectangleWidthValue,
+          ReactangleLengthValue
+        );
+        const calculatedParalellogramleValue = calculateParallelogramArea(
+          paralellogramBaseValue,
+          paralellogramHeightValue
+        );
+
+        const calculatedRhombusValue = calculateRhombusArea(
+          rhombusBaseValue,
+          rhombusHeightValue
+        );
+        const calculatedPentagonValue = calculatePentagonArea(
+          pentagonBaseValue,
+          pentagonHeightValue
+        );
+
+        const calculatedEllipseValue = calculateEllipseArea(
+          ellipseAAxisValue,
+          ellipseBAxisValue
+        );
+
+        let calculateArea;
+
+        if (calculatedTriangleValue) {
+          calculateArea = calculatedTriangleValue;
+        } else if (calculatedRectangleValue) {
+          calculateArea = calculatedRectangleValue;
+        } else if (calculatedParalellogramleValue) {
+          calculateArea = calculatedParalellogramleValue;
+        } else if (calculatedRhombusValue) {
+          calculateArea = calculatedRhombusValue;
+        } else if (calculatedPentagonValue) {
+          calculateArea = calculatedPentagonValue;
+        } else if (calculatedEllipseValue) {
+          calculateArea = calculatedEllipseValue;
+        }
+
+        const calculateObj = {
+          result: calculateArea,
+          name,
+        };
+        calculatedValue.push(calculateObj);
+
+        displayResult();
+        triangle();
+      }
+
+
+
+      function triangle() {
+        document.getElementById("triangle-base-value").value = "";
+        document.getElementById("triangle-height-value").value= "";
+
+        document.getElementById("rectangle-width-value").value= "";
+        document.getElementById("rectangle-length-value").value= "";
+
+        document.getElementById("paralellogram-base-value").value= "";
+        document.getElementById("paralellogram-height-value").value= "";
+
+        document.getElementById("rhombus-base-value").value= "";
+        document.getElementById("rhombus-height-value").value= "";
+
+        document.getElementById("pentagon-base-value").value= "";
+        document.getElementById("pentagon-height-value").value= "";
+        document.getElementById("a-axis-value").value= "";
+        document.getElementById("b-axis-value").value= "";
+
+      }
+    
+      // show all array element one by one
+      function displayResult() {
+        const showResult = document.getElementById("display-value");
+        showResult.innerHTML = "";
+        for (let i = 0; i < calculatedValue.length; i++) {
+          const result = calculatedValue[i];
+
+          const liElement = document.createElement("li");
+          const span = document.createElement("span");
+          const cm2 = document.createElement("span");
+          cm2.innerHTML = "cm<sup>2</sup>";
+          const convert = document.createElement("span");
+          convert.innerHTML = "covrt to m<sup>2</sup>";
+          convert.style.backgroundColor = "blue";
+          convert.style.color = "white";
+          liElement.innerHTML = result.name + "    " + result.result;
+
+          liElement.appendChild(cm2);
+          liElement.appendChild(span);
+          liElement.appendChild(convert);
+
+          showResult.appendChild(liElement);
+        }
+      }
+
+      //for random hover
+      function ChangeColor(element) {
+        var color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        element.style.backgroundColor = color;
+      }
+
+      function ResetColor(element) {
+        element.style.backgroundColor = "";
+      }
+
+      //when blog button will be clicked, a new page blog.html will be opened.
+    </script>
+  </body>
+</html>

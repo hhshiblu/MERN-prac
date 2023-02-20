@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shape Calculator</title>
+  </head>
+  <body>
+    <h1>Shape Calculator</h1>
+
+    <input
+      type="number"
+      name="shiblu"
+      id="base"
+      placeholder="Enter the base of the triangle"
+    />
+    <input
+      type="number"
+      name="shiblu"
+      id="height"
+      placeholder="Enter the height of the triangle"
+    />
+    <input
+      type="number"
+      name="gg"
+      id="bases"
+      placeholder="Enter the base of the triangle"
+    />
+    <input
+      type="number"
+      name="gg"
+      id="heights"
+      placeholder="Enter the height of the triangle"
+    />
+    <input type="text" id="newTask" placeholder="Enter the task name" />
+    <button onclick="addTask('hasan')">Add Task</button>
+
+    <div id="distask">
+      <ul></ul>
+    </div>
+
+    <script>
+      // ............................
+      // initialize empty array to hold tasks
+      // initialize empty array to hold tasks
+      let tasks = [];
+
+      // function to calculate area of a triangle
+      function calculateArea(base, height) {
+        return 0.5 * base * height;
+      }
+      function calculateAreas(base, height) {
+        return base + height;
+      }
+
+      // function to add a new task to the array
+      function addTask(name) {
+        
+        // get input values
+        const base = parseInt(document.getElementById("base").value);
+        const height = parseInt(document.getElementById("height").value);
+
+        const bases = parseInt(document.getElementById("bases").value);
+        const heights = parseInt(document.getElementById("heights").value);
+        const newTask = document.getElementById("newTask").value;
+
+        // if (isNaN(base) || isNaN(height) || newTask === '') {
+        //   alert('Please enter valid input for base, height, and task name.');
+        //   return;
+        // }
+
+        // calculate area of triangle
+        const area = calculateArea(base, height);
+        const added = calculateAreas(bases, heights);
+
+        let areas;
+        if (added) {
+          areas = added;
+        }
+        if (area) {
+          areas = area;
+        }
+        // create new task object
+        const taskObj = { area: areas };
+
+        // add task to array
+        tasks.push(taskObj);
+
+        // display tasks
+        displayTasks(name);
+        
+      }
+
+      // function to display all tasks in the array one by one
+      function displayTasks(name) {
+
+        const taskDisplay = document.getElementById("distask");
+
+        // clear existing display
+
+        taskDisplay.innerHTML = "" ;
+        // loop through tasks and add to display
+        for (let i = 0; i < tasks.length; i++) {
+          const taskObj = tasks[i];
+
+          console.log(taskObj.area);
+
+          // create delete button
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "Delete";
+          deleteButton.addEventListener("click", function () {
+            deleteTask(i);
+          });
+
+          // create task container and add task and delete button
+          // const taskContainers = document.createElement('ul');
+          const taskContainer = document.createElement("li");
+          const span=document.createElement("span");
+          taskContainer.innerText =name + taskObj.area;
+          
+          taskContainer.appendChild(span);
+          taskContainer.appendChild(deleteButton);
+          taskDisplay.appendChild(taskContainer);
+        }
+
+        const changeColor=("#"+Math.floor(Math.random()*16777215).toString(16));
+        cons
+      }
+
+      // function to delete a task from the array
+      function deleteTask(index) {
+        tasks.splice(index, 1);
+        displayTasks();
+      }
+
+      // let area;
+      //   switch (shape) {
+      //     case 'triangle':
+      //       area = calculateTriangleArea(dimension1, dimension2);
+      //       break;
+      //     case 'circle':
+      //       area = calculateCircleArea(dimension1);
+      //       break;
+      //     case 'square':
+      //       area = calculateSquareArea(dimension1);
+      //       break;
+      //     default:
+      //       area = 0;
+      //       break;
+      //   }
+    </script>
+  </body>
+</html>
